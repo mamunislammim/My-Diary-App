@@ -13,14 +13,7 @@ class WriteDiaryPage extends StatefulWidget {
 class _WriteDiaryPageState extends State<WriteDiaryPage> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _diaryController = TextEditingController();
-  Box? box;
 
-  @override
-  void initState() {
-    box = Hive.box("openBox");
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +48,14 @@ class _WriteDiaryPageState extends State<WriteDiaryPage> {
             ),
             const SizedBox(height: 10),
             ElevatedButton(
-                onPressed: () {
-                  box?.add(DiaryData(
-                      title: _titleController.text,
-                      comment: _diaryController.text));
-                  Navigator.pop(context);
+                onPressed: (){
+                 setState(() {
+                  Box box = Hive.box("openBox");
+                   box.add(DiaryData(
+                       title: _titleController.text,
+                       comment: _diaryController.text));
+                     Navigator.pop(context);
+                 });
                   // Navigator.push(context, MaterialPageRoute(builder: (context)=> DiaryPage()));
                 },
                 child: const Text("Save To Diary"))
