@@ -4,7 +4,8 @@ import 'package:my_diary/Models/diary_data_model.dart';
 import 'package:my_diary/Screens/diary_page.dart';
 
 class WriteDiaryPage extends StatefulWidget {
-  const WriteDiaryPage({Key? key}) : super(key: key);
+   const WriteDiaryPage({Key? key,}) : super(key: key);
+
 
   @override
   State<WriteDiaryPage> createState() => _WriteDiaryPageState();

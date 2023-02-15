@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_diary/Models/diary_data_model.dart';
 import 'package:my_diary/Screens/write_diary_page.dart';
-
-import 'details_screens.dart';
+  import 'edit_screen.dart';
 
 class DiaryPage extends StatefulWidget {
   const DiaryPage({Key? key}) : super(key: key);
@@ -44,9 +43,8 @@ class _DiaryPageState extends State<DiaryPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => DetailsPage(
-                                            title: data.title,
-                                            comment: data.comment,
+                                      builder: (context) => TestData(data: data,
+
                                           )));
                             },
                             shape: RoundedRectangleBorder(
@@ -87,7 +85,14 @@ class _DiaryPageState extends State<DiaryPage> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => TestData(
+                                                   data: data,
+                                                  )));
+                                    },
                                     child: const Icon(
                                       Icons.edit,
                                     )),

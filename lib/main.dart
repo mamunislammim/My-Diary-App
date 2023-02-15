@@ -3,7 +3,6 @@ import 'package:my_diary/Models/diary_data_model.dart';
 import 'Screens/diary_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-
 void main()async{
   // WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
