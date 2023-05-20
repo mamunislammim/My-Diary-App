@@ -7,7 +7,7 @@ void main()async{
   // WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(DiaryDataAdapter());
-  await Hive.openBox("openBox");
+  await Hive.openBox("diaryBox");
   runApp(const MyApp());
 }
 
