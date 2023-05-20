@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+ import 'package:hive/hive.dart';
 import 'package:my_diary/Screens/diary_page.dart';
 import '../Models/diary_data_model.dart';
 
@@ -61,12 +61,19 @@ class _DataAddUpdatePageState extends State<DataAddUpdatePage> {
             ),
             GestureDetector(
               onTap: () async {
-                await addItem();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DiaryPage()));
+                if (_titleController.text == null ||
+                    _titleController.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      padding: EdgeInsets.all(20),
+                      content: Text("Please Add a title..")));
+                } else {
+                  await addItem();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => DiaryPage()));
+                }
               },
               child: const Card(
-                color:  Color(0xff93c6da),
+                color: Color(0xff93c6da),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -74,7 +81,8 @@ class _DataAddUpdatePageState extends State<DataAddUpdatePage> {
                       padding: EdgeInsets.all(20.0),
                       child: Text(
                         "Save to Diary",
-                        style: TextStyle(color:  Color(0xff174951), fontSize: 20),
+                        style:
+                            TextStyle(color: Color(0xff174951), fontSize: 20),
                       ),
                     ),
                   ],
